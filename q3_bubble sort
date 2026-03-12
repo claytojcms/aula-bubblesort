@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void gerarVetor(float v[], int n){
+
+    for(int i = 0; i < n; i++){
+        v[i] = (float)rand()/ RAND_MAX * 10;
+    }
+
+}
+float calcular_media(float v[],int n){
+float media;
+for(int i=0;i<n;i++)
+    media=media+v[i];
+    media= (media/n);
+return media;
+}
+
+
+void bubbleSort(float v[], int n) {
+    int comparacoes = 0;
+    int trocas = 0;
+    for(int i=0; i< n ;i++){
+       int houvetroca =0 ;
+        for(int j=0 ; j<n-i-1 ; j++){
+    comparacoes++;
+            if(v[j]>v[j+1]){
+                float temp= v[j+1];
+                v[j+1]= v[j];
+                v[j]= temp;
+                trocas ++;
+                houvetroca=1;
+            }
+        }
+        if(houvetroca==0)
+            break;
+    }
+     printf("Otimizado:\n Trocas=%d  comparacoes:%d\n",trocas,comparacoes);
+}
+
+void imprimirVetor(float v[], int n) {
+    for(int i = 0; i < n; i++)
+        printf("%.2f ", v[i]);
+    printf("\n\n");
+}
+
+int main() {
+    int n=20;
+    float notas[n];
+    srand(time(NULL));
+   gerarVetor(notas,n);
+   imprimirVetor(notas,n);
+   bubbleSort(notas,n);
+   imprimirVetor(notas,n);
+
+   printf("o top 3 foi %.2f, %.2f e %.2f e a media foi de %.2f",notas[n-1],notas[n-2],notas[n-3], calcular_media(notas,n));
+
+
+
+    return 0;
+}
+
