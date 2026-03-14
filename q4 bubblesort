@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+void bubbleSort(int v[], int n, int ordem) {
+ int comparacoes = 0;
+ int trocas = 0;
+   if(ordem==1){
+    for(int i=0; i< n ;i++){
+       int houvetroca =0 ;
+        for(int j=0 ; j<n-i-1 ; j++){
+    comparacoes++;
+            if(v[j]>v[j+1]){
+                int temp= v[j+1];
+                v[j+1]= v[j];
+                v[j]= temp;
+                trocas ++;
+                houvetroca=1;
+            }
+        }
+
+    }
+} if(ordem==-1){
+    for(int i=0; i< n ;i++){
+       int houvetroca =0 ;
+        for(int j=0 ; j<n-i-1 ; j++){
+    comparacoes++;
+            if(v[j]<v[j+1]){
+                int temp= v[j+1];
+                v[j+1]= v[j];
+                v[j]= temp;
+                trocas ++;
+                houvetroca=1;
+            }
+        }
+
+    }
+}
+    printf("trocas:%d  ||  comparacoes:%d\n",trocas, comparacoes);
+}
+
+void imprimirVetor(int v[], int n) {
+    for(int i = 0; i < n; i++)
+        printf("%d ", v[i]);
+    printf("\n");
+
+}
+
+int main() {
+    int repetidos[] = {64, 64, 22, 12, 22, 11, 90};
+    int n = 7;
+    int vazio[]={};
+    int elemento[]={4};
+    int mistura[] = {-3, 4, 67, 32, 13, -6, 29};
+    int ordem;
+
+    printf("ordena de forma:\n1 -crescente \n-1 -decrescente\n");
+    scanf("%d",&ordem);
+
+    printf("Vetor repetidos: ");
+    imprimirVetor(repetidos, n);
+    bubbleSort(repetidos, n,ordem);
+    printf("Vetor ordenado: ");
+    imprimirVetor(repetidos, n);
+
+    printf("\nVetor vazio: ");
+    imprimirVetor(vazio, 0);
+    bubbleSort(vazio, 0,ordem);
+    printf("Vetor ordenado: ");
+    imprimirVetor(vazio, 0);
+
+    printf("\nVetor unico elemento: ");
+    imprimirVetor(elemento, 1);
+    bubbleSort(elemento, 1,ordem);
+    printf("Vetor ordenado: ");
+    imprimirVetor(elemento,1);
+
+    printf("\nVetor mistura positivo/negativo: ");
+    imprimirVetor(mistura , n);
+    bubbleSort(mistura, n,ordem);
+    printf("Vetor ordenado: ");
+    imprimirVetor(mistura, n);
+
+
+    return 0;
+}
+
